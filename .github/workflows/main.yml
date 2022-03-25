@@ -39,7 +39,7 @@ jobs:
       - name: Azure Load Testing
         uses: Azure/load-testing@v1
         with:
-          loadTestConfigFile: 'SampleApp.yaml'
+          loadTestConfigFile: 'testconfig.yaml'
           loadTestResource: 'loadTestResourceName'
           resourceGroup: 'loadTestResourceGroup'
           env: |
