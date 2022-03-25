@@ -40,8 +40,8 @@ jobs:
         uses: Azure/load-testing@v1
         with:
           loadTestConfigFile: 'testconfig.yaml'
-          loadTestResource: 'loadTestResourceName'
-          resourceGroup: 'loadTestResourceGroup'
+          loadTestResource: 'main'
+          resourceGroup: 'load-test'
           env: |
             [
               {
