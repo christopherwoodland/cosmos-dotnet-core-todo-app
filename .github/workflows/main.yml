@@ -13,6 +13,11 @@ on:
   # Allows you to run this workflow manually from the Actions tabA
   workflow_dispatch:
 
+env:
+  AZURE_WEBAPP_NAME: "to-do-apps4im35htu3dis.azurewebsites"
+  LOAD_TEST_RESOURCE: "main"
+  LOAD_TEST_RESOURCE_GROUP: "load-test"
+  
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build-and-deploy:
@@ -30,3 +35,18 @@ jobs:
         continue-on-error: false
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Azure Load Testing
+        uses: Azure/load-testing@v1
+        with:
+          loadTestConfigFile: 'SampleApp.yaml'
+          loadTestResource: 'loadTestResourceName'
+          resourceGroup: 'loadTestResourceGroup'
+          env: |
+            [
+              {
+              "name": "webapp",
+              "value": "${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net"
+              }
+            ]       
+
