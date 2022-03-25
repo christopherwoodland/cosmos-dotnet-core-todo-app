@@ -1,5 +1,5 @@
 version: v0.1
-testName: Standard Load Test
+testName: Standard_Load_Test_From_GitHub
 testPlan: standard_load_test.jmx
 description: 'Sample Test Run From GitHub'
 engineInstances: 1
